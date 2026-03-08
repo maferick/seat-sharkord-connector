@@ -1,0 +1,14 @@
+{
+  "seat_user_id": "seat_user_456",
+  "username": "deniedpilot",
+  "groups": ["banned"],
+  "characters": [
+    {
+      "character_id": 2888888888,
+      "character_name": "Denied Pilot",
+      "corp_id": 100,
+      "alliance_id": 200,
+      "is_main": true
+    }
+  ]
+}

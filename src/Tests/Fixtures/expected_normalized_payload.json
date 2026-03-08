@@ -1,0 +1,36 @@
+{
+  "provider": "seat",
+  "external_user_id": "seat_user_123",
+  "external_account_id": "seat_account_123",
+  "identity": {
+    "character_id": 2112345678,
+    "main_character_id": 2112345678,
+    "character_name": "Maferick Example",
+    "main_character_name": "Maferick Example"
+  },
+  "profile": {
+    "username": "maferick",
+    "display_name": "Maferick Example",
+    "email": null,
+    "avatar_url": null
+  },
+  "managed_fields": {
+    "username": "locked",
+    "display_name": "external",
+    "roles": "locked",
+    "account_status": "external"
+  },
+  "account_state": "active",
+  "eligibility_state": "eligible",
+  "groups": ["member", "director"],
+  "mapped_roles": [
+    {"external_role_key": "member", "sharkord_role_key": "community.member", "sync_mode": "authoritative"},
+    {"external_role_key": "director", "sharkord_role_key": "community.leadership", "sync_mode": "authoritative"}
+  ],
+  "metadata": {
+    "seat_user_id": "seat_user_123",
+    "seat_groups": ["member", "director"],
+    "corp_id": 98765432,
+    "alliance_id": 99009900
+  }
+}

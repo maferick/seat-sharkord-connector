@@ -1,0 +1,15 @@
+{
+  "seat_user_id": "seat_user_123",
+  "seat_account_id": "seat_account_123",
+  "username": "maferick",
+  "groups": ["member", "director"],
+  "characters": [
+    {
+      "character_id": 2112345678,
+      "character_name": "Maferick Example",
+      "corp_id": 98765432,
+      "alliance_id": 99009900,
+      "is_main": true
+    }
+  ]
+}
