@@ -15,10 +15,10 @@ final class RoleMapper
         return $mappings
             ->filter(fn ($mapping) => in_array($mapping->source_key, $seatGroups, true))
             ->map(fn ($mapping) => [
-                'external_role_key' => $mapping->source_key,
-                'sharkord_role_key' => $mapping->sharkord_role_key,
-                'sync_mode' => $mapping->sync_mode,
+                'key' => $mapping->sharkord_role_key,
+                'name' => $mapping->source_label,
             ])
+            ->unique('key')
             ->values()
             ->all();
     }

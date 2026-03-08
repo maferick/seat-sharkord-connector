@@ -25,40 +25,36 @@ final class IdentityNormalizer
         ]);
         $mappedRoles = $this->roleMapper->map($seatUser['groups'] ?? []);
 
-        return new NormalizedIdentity([
-            'provider' => 'seat',
+        $payload = [
+            'provider_type' => 'seat',
             'event_id' => $seatUser['event_id'] ?? uniqid('evt_', true),
-            'issued_at' => gmdate('c'),
+            'issued_at' => (int) round(microtime(true) * 1000),
             'external_user_id' => (string) $seatUser['seat_user_id'],
             'external_account_id' => (string) ($seatUser['seat_account_id'] ?? $seatUser['seat_user_id']),
-            'identity' => [
-                'character_id' => $main['character_id'] ?? null,
-                'main_character_id' => $main['character_id'] ?? null,
-                'character_name' => $main['character_name'] ?? null,
-                'main_character_name' => $main['character_name'] ?? null,
-            ],
-            'profile' => [
-                'username' => $seatUser['username'] ?? null,
-                'display_name' => $main['character_name'] ?? ($seatUser['username'] ?? null),
-                'email' => $seatUser['email'] ?? null,
-                'avatar_url' => $seatUser['avatar_url'] ?? null,
-            ],
+            'username' => (string) ($seatUser['username'] ?? ('seat-user-' . $seatUser['seat_user_id'])),
+            'display_name' => (string) ($main['character_name'] ?? ($seatUser['display_name'] ?? $seatUser['username'] ?? 'SeAT User')),
+            'character_id' => isset($main['character_id']) ? (string) $main['character_id'] : null,
+            'main_character_id' => isset($main['character_id']) ? (string) $main['character_id'] : null,
+            'character_name' => $main['character_name'] ?? null,
+            'main_character_name' => $main['character_name'] ?? null,
             'managed_fields' => [
                 'username' => 'locked',
                 'display_name' => 'external',
-                'roles' => 'locked',
+                'role_assignments' => 'locked',
                 'account_status' => 'external',
             ],
             'account_state' => 'active',
             'eligibility_state' => $eligibility->state,
-            'groups' => array_values($seatUser['groups'] ?? []),
-            'mapped_roles' => $mappedRoles,
+            'external_roles' => $mappedRoles,
             'metadata' => [
                 'seat_user_id' => (string) $seatUser['seat_user_id'],
                 'seat_groups' => array_values($seatUser['groups'] ?? []),
+                'seat_permissions' => array_values($seatUser['permissions'] ?? []),
                 'corp_id' => $main['corp_id'] ?? null,
                 'alliance_id' => $main['alliance_id'] ?? null,
             ],
-        ]);
+        ];
+
+        return new NormalizedIdentity(array_filter($payload, static fn ($value) => $value !== null));
     }
 }

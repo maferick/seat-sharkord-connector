@@ -15,6 +15,8 @@ SeAT plugin/package that treats SeAT as source of truth and pushes normalized si
 - `POST /api/v1/ext/users/disable`
 - `POST /api/v1/ext/users/restore`
 - `POST /api/v1/ext/users/soft-delete`
+- `POST /api/v1/ext/users/provision-password`
+- `POST /api/v1/ext/users/reset-password`
 - `POST /api/v1/ext/roles/sync`
 - `POST /api/v1/ext/roles/preview`
 - `POST /api/v1/ext/eligibility/preview`

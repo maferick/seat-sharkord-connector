@@ -22,6 +22,8 @@ final class SharkordClient
     public function syncRoles(array $payload): array { return $this->sendSigned('/roles/sync', $payload); }
     public function previewRoles(array $payload): array { return $this->sendSigned('/roles/preview', $payload); }
     public function previewEligibility(array $payload): array { return $this->sendSigned('/eligibility/preview', $payload); }
+    public function provisionPassword(array $payload): array { return $this->sendSigned('/users/provision-password', $payload); }
+    public function resetPassword(array $payload): array { return $this->sendSigned('/users/reset-password', $payload); }
 
     public function getDiagnostics(string $path): array
     {
