@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Seat\SharkordConnector;
 
-use Illuminate\Support\ServiceProvider;
 use Seat\Services\AbstractSeatPlugin;
 
 class SharkordConnectorServiceProvider extends AbstractSeatPlugin
@@ -36,6 +35,11 @@ class SharkordConnectorServiceProvider extends AbstractSeatPlugin
     public function getPackagistPackageName(): string
     {
         return 'sharkord/seat-sharkord-connector';
+    }
+
+    public function getPackagistVendorName(): string
+    {
+        return 'sharkord';
     }
 
     public function getPermissions(): array
