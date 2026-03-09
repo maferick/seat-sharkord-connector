@@ -38,11 +38,6 @@ class SharkordConnectorServiceProvider extends AbstractSeatPlugin
         return 'sharkord/seat-sharkord-connector';
     }
 
-    public function getVersion(): string
-    {
-        return '0.1.0';
-    }
-
     public function getPermissions(): array
     {
         return [
