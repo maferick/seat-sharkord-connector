@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Seat\SharkordConnector;
 
 use Seat\Services\AbstractSeatPlugin;
+use Seat\SharkordConnector\Console\Commands\InstallSharkordConnectorCommand;
 
 class SharkordConnectorServiceProvider extends AbstractSeatPlugin
 {
@@ -14,6 +15,12 @@ class SharkordConnectorServiceProvider extends AbstractSeatPlugin
         $this->registerRoutes(__DIR__ . '/routes/web.php', __DIR__ . '/routes/api.php');
         $this->registerViews(__DIR__ . '/resources/views', 'seat-sharkord-connector');
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallSharkordConnectorCommand::class,
+            ]);
+        }
     }
 
     public function register(): void
