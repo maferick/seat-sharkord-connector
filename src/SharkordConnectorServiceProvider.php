@@ -11,7 +11,9 @@ class SharkordConnectorServiceProvider extends AbstractSeatPlugin
 {
     public function boot(): void
     {
-        $this->registerConfig(__DIR__ . '/Config/sharkord.php', 'sharkord_connector');
+        $this->publishes([
+            __DIR__ . '/Config/sharkord.php' => config_path('sharkord_connector.php'),
+        ], 'config');
         $this->registerRoutes(__DIR__ . '/routes/web.php', __DIR__ . '/routes/api.php');
         $this->registerViews(__DIR__ . '/resources/views', 'seat-sharkord-connector');
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
