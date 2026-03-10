@@ -37,7 +37,7 @@ HMAC SHA-256 over `provider.timestamp.nonce.rawBody` with headers expected by Sh
 
 1. Add package to SeAT composer dependencies.
 2. Install and enable plugin.
-3. Run plugin migrations.
+3. Run `php artisan sharkord:install` to execute migrations and bootstrap default settings.
 4. Configure Sharkord URL/secret/mappings in SeAT admin.
 5. Run diagnostics health test and first preview/upsert.
 

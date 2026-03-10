@@ -1,6 +1,6 @@
 # Setup
 
-1. Install package in SeAT and run migrations.
+1. Install package in SeAT and run `php artisan sharkord:install`.
 2. Open Sharkord Connector settings.
 3. Configure:
    - Sharkord base URL
